@@ -22,6 +22,10 @@ def response(context, flow):
 	json_request['port'] = flow.request.port
 	json_request['url'] = flow.request.url
 
+	json_request['headers'] = {}
+        for item in flow.request.headers:
+                json_request['headers'][item] = flow.request.headers[item]
+
 	json_response['content'] = unicode(flow.response.content, errors='ignore')
 	json_response['headers'] = {}
 	for item in flow.response.headers:
